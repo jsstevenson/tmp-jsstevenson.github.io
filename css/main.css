@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -10,3 +11,4 @@ body {
     -webkit-box-pack: center;
     justify-content: center;  
 }
+
