@@ -1,0 +1,10 @@
+# The Power of Endorsements? A Look at Editorial Board Picks and Electoral Success in Seattle
+# seattle,politics,data
+# 2019/07/27
+
+Now that politics has successfully subsumed the entirety of human existence, and we are barely given a reprieve after the last election before our eyes turn to the next one, it is with some interest that I regard the 2019 primary endorsements recently posted by the [Seattle Times Editorial Board](https://www.seattletimes.com/opinion/editorials/the-seattle-times-editorial-boards-2019-primary-election-endorsements/) and [The Stranger Election Control Board](https://www.thestranger.com/features/2019/07/17/40780569/the-strangers-endorsements-for-the-august-6-2019-primary-election). Personally, I have often used The Stranger as a guiding light for electoral decisions, particularly in races that I'm less familiar with; the Times, on the other hand, tends to be most instructive for knowing who *not* to vote for. From conversations with my peers, I know this is not a particularly rare position (although my active animosity towards the Times' editorial board may be outside of the norm). This got me to thinking: how much power over city elections is held in the hands of the city paper and its main alt-weekly? Can we quantify this?
+
+No, we probably cannot quantify this - at least, not with publicly available data. A [2015 Crosscut article](https://crosscut.com/2015/10/times-or-stranger-whose-endorsement-drives-votes) looks in a few directions, like Google search frequency, and doesn't unearth any solid answers, although the qualitative evidence certainly points in the suggestion of a solid degree of influence. It's also hard to know whether editorial boards influence undecided voters, or if they are simply picking winning canditates. As we all (*cough* Biden) know, political endorsements often factor 'electability' as a significant factor of overall desirability. Still, even evidence of a general correlative trend would be interesting.
+
+## The Data
+
