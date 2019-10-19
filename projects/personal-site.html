@@ -9,16 +9,16 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="../css/custom.css">
 
-  <title>james stevenson: blog</title>
+  <title>projects</title>
 </head>
 
 <body>
   <div class="container">
     <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">James Stevenson</a>
+      <a class="navbar-brand" href="../index.html">James Stevenson</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,63 +27,51 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="../projects.html">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="academics.html">Academics</a>
+            <a class="nav-link" href="../academics.html">Academics</a>
           </li>
           <!--blog-dropdown-->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="../blog.html" id="navbarDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="blog.html">Current</a>
+              <a class="dropdown-item" href="../blog.html">Current</a>
               <div class="dropdown-divider"></div>
               <!--monthlist-->
-              <a class="dropdown-item" href="blog/2018/jan">January 2018</a>
-              <a class="dropdown-item" href="blog/2017/dec">December 2017</a>
+              <a class="dropdown-item" href="../blog/2018/jan">January 2018</a>
+              <a class="dropdown-item" href="../blog/2017/dec">December 2017</a>
               <!--/monthlist-->
             </div>
           </li>
           <!--/blog-dropdown-->
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
         </ul>
       </div>
     </nav>
     <!--/navbar-->
-    <!--blog body-->
-    <!--post preview-->
-    <div class="card" style="margin-top: 1em">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#">Post</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Date</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-      </div>
+
+    <!--main page-->
+    <div class="container" style="margin: 1.5em 0em 1.5em 0em">
+      <h1>Personal website</h1>
     </div>
-    <!--/post preview-->
-    <!--post preview-->
-    <div class="card" style="margin-top: 1em">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#">Post</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Date</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-      </div>
+    <div class="container" style="margin-bottom: 1em">
+      <h6 class="text-muted">Site: HTML, CSS (Bootstrap 4)</h6>
+      <h6 class="text-muted">Static Generator: Python 3</h6>
     </div>
-    <!--/post preview-->
-    <!--post preview-->
-    <div class="card" style="margin-top: 1em">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#">Post</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Date</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-      </div>
+    <div class="container">
+        <p>I used my personal site as a reason to familiarize myself with basic front-end technologies (and try to overcome my fear of visual design). Most things are pulled, in one way or another, from Bootstrap 4, which seemed like a front-end framework as good as any (and certainly a ubiquitous one). </p>
+      <p>Since I'm cheap, I wanted to host the site statically and use scripting tools to generate it locally. While much of the site's content is filled in by hand, I use a basic set of scripts written in Python 3 to build and test, generating new blog posts from markdown files.</p>
     </div>
-    <!--/post preview-->
-    <!--/blog body-->
+    <div class="container">
+        <img src="../images/projects/personal-site/Screen Shot 2019-10-16 at 9.25.56 PM.png" class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%">
+    </div>
+    <!--/main page-->
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
