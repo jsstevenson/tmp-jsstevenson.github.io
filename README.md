@@ -1,1 +1,1 @@
-Personal site: located at [jsstevenson.github.io](jsstevenson.github.io).
+Personal site: located at [jsstevenson.github.io](http://jsstevenson.github.io).
