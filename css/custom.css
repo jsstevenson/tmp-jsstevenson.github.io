@@ -13,5 +13,17 @@
 }
 
 .jumbotron {
-    padding: 2em 0em 2em 0em;
+    padding: 1.5em 0em 0.7em 0em;
 }
+
+#unordered {
+    list-style: none;
+    padding-left: 0;
+}
+
+#unordered li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
