@@ -68,8 +68,8 @@
 <table>
 <thead><tr>
 <th style="text-align:left"><strong>Language</strong></th>
-<th style="text-align:left"><strong>Variable Declaration</strong></th>
-<th style="text-align:left"><strong>Function Declaration</strong></th>
+<th style="text-align:left"><strong>Variable</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
 <th style="text-align:left"><strong>Mandatory</strong></th>
 </tr>
 </thead>
@@ -77,73 +77,73 @@
 <tr>
 <td style="text-align:left">Rust</td>
 <td style="text-align:left"><code>let foo: Bar = 0</code></td>
-<td style="text-align:left">fn baz() -&gt; Bar</td>
+<td style="text-align:left"><code>fn baz(foo: Bar) -&gt; Bar</code></td>
 <td style="text-align:left">Inferred</td>
 </tr>
 <tr>
 <td style="text-align:left">Python</td>
 <td style="text-align:left"><code>foo: Bar = 0</code></td>
-<td style="text-align:left">def baz() -&gt; Bar</td>
+<td style="text-align:left"><code>def baz(foo: Bar) -&gt; Bar</code></td>
 <td style="text-align:left">Optional</td>
 </tr>
 <tr>
 <td style="text-align:left">Scala</td>
 <td style="text-align:left"><code>val foo: Bar = 0</code></td>
-<td style="text-align:left">def baz() =&gt; Bar</td>
+<td style="text-align:left"><code>def baz(foo: Bar) =&gt; Bar</code></td>
 <td style="text-align:left">Inferred</td>
 </tr>
 <tr>
 <td style="text-align:left">TypeScript</td>
 <td style="text-align:left"><code>let foo: Bar = 0</code></td>
-<td style="text-align:left">baz(foo: Bar): Bar</td>
+<td style="text-align:left"><code>baz(foo: Bar): Bar</code></td>
 <td style="text-align:left">Inferred</td>
 </tr>
 <tr>
 <td style="text-align:left">C/C++</td>
 <td style="text-align:left"><code>Bar foo = 0</code></td>
-<td style="text-align:left">Bar baz(Bar foo)</td>
+<td style="text-align:left"><code>Bar baz(Bar foo)</code></td>
 <td style="text-align:left">Mandatory</td>
 </tr>
 <tr>
 <td style="text-align:left">C-Sharp</td>
 <td style="text-align:left"><code>Bar foo = 0</code></td>
-<td style="text-align:left">Bar baz(Bar foo)</td>
+<td style="text-align:left"><code>Bar baz(Bar foo)</code></td>
 <td style="text-align:left">Mandatory</td>
 </tr>
 <tr>
 <td style="text-align:left">Swift</td>
 <td style="text-align:left"><code>var foo: Bar = 0</code></td>
-<td style="text-align:left">func baz(_ foo: Bar) -&gt; Bar</td>
+<td style="text-align:left"><code>func baz(\_ foo: Bar) -&gt; Bar</code></td>
 <td style="text-align:left">Inferred</td>
 </tr>
 <tr>
 <td style="text-align:left">Java</td>
 <td style="text-align:left"><code>Bar foo = 0</code></td>
-<td style="text-align:left">Bar baz(Bar foo) {</td>
+<td style="text-align:left"><code>Bar baz(Bar foo)</code></td>
 <td style="text-align:left">Mandatory</td>
 </tr>
 <tr>
 <td style="text-align:left">Kotlin</td>
 <td style="text-align:left"><code>val foo = 0</code></td>
-<td style="text-align:left">fun baz(foo: Bar): Bar {</td>
+<td style="text-align:left"><code>fun baz(foo: Bar): Bar</code></td>
 <td style="text-align:left">Inferred for variables</td>
 </tr>
 <tr>
 <td style="text-align:left">Objective C</td>
 <td style="text-align:left"><code>Bar foo = 0</code></td>
-<td style="text-align:left">Bar baz(Bar foo)</td>
+<td style="text-align:left"><code>Bar baz(Bar foo)</code></td>
 <td style="text-align:left">Mandatory</td>
 </tr>
 <tr>
 <td style="text-align:left">Go</td>
 <td style="text-align:left"><code>var foo Bar = 0</code></td>
-<td style="text-align:left">func baz(foo Bar) (return_foo Bar)</td>
+<td style="text-align:left"><code>func baz(foo Bar) (return_foo Bar)</code></td>
 <td style="text-align:left">Inferred?</td>
 </tr>
 <tr>
 <td style="text-align:left">Standard ML</td>
 <td style="text-align:left"><code>val foo = 0 : Bar</code></td>
-<td style="text-align:left">fun baz(foo : Bar)</td>
+<td style="text-align:left"><code>fun baz(foo : Bar)</code></td>
 <td style="text-align:left">Inferred</td>
 </tr>
 <tr>
