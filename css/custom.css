@@ -16,12 +16,23 @@
     padding: 1.5em 0em 0.7em 0em;
 }
 
-#unordered {
+#tag-list {
     list-style: none;
     padding-left: 0;
 }
 
-#unordered li {
+#tag-list li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 12px;
+}
+
+#icon-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#icon-list li {
     display: inline;
     list-style-type: none;
     padding-right: 12px;
