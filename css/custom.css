@@ -38,3 +38,14 @@
     padding-right: 12px;
 }
 
+#project-icon-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#project-icon-list li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 12px;
+}
+
