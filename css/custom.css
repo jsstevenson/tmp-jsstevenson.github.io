@@ -2,6 +2,10 @@
     max-width: 800px;
 }
 
+.body-container {
+    margin-bottom: 1em;
+}
+
 .vertical-center {
     min-height: 100%;
     /* Fallback for browsers do NOT support vh unit */
@@ -53,3 +57,4 @@
 .list-dot {
     padding-right: 0.4em;
 }
+
