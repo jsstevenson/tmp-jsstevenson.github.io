@@ -80,8 +80,14 @@
     margin-bottom: 15px;
 }
 
-.cv-group:last-child {
+.cv-group:first-child {
     margin-top: 40px;
+}
+
+.cv-title {
+    /*
+    font-size: 0.9rem;
+    */
 }
 
 .cv-item {
@@ -89,25 +95,38 @@
 }
 
 .cv-item p {
+    /*
     font-size: 0.9rem;
+    */
 }
 
 .cv-icon {
     padding-right: 0.4em;
 }
 
-.top-row {
+.cv-top-row {
     position: relative;
 }
 
-.date {
+.cv-top-row p {
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.cv-date {
     right: 0;
     top: 0;
     position: absolute;
 }
 
+.cv-date p {
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
 .cv-desc p {
     margin-bottom: 0em;
+    font-size: 0.9rem;
 }
 
 .cv-desc ul {
