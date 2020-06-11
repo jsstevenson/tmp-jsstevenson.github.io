@@ -20,6 +20,19 @@
     padding: 1.5em 0em 0.7em 0em;
 }
 
+.jumbotron-home {
+    margin-bottom: 0px;
+}
+
+.jumbotron-post {
+    margin-bottom: 0px;
+}
+
+.card {
+    border: none;
+    margin-top: 0em;
+}
+
 #tag-list {
     list-style: none;
     padding-left: 0;
@@ -42,6 +55,10 @@
     padding-right: 25px;
 }
 
+#icon-list li:last-child {
+    padding-right: 0px;
+}
+
 #project-icon-list {
     list-style: none;
     padding-left: 0;
@@ -58,3 +75,37 @@
     padding-right: 0.4em;
 }
 
+.cv-group {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.cv-item {
+    margin-bottom: 1.2em;
+}
+
+.cv-item p {
+    font-size: 0.9rem;
+}
+
+.cv-icon {
+    padding-right: 0.4em;
+}
+
+.top-row {
+    position: relative;
+}
+
+.date {
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+.cv-desc p {
+    margin-bottom: 0em;
+}
+
+.cv-desc ul {
+    font-size: 0.9rem;
+}
