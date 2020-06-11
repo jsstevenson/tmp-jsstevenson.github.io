@@ -80,6 +80,10 @@
     margin-bottom: 15px;
 }
 
+.cv-group:last-child {
+    margin-top: 40px;
+}
+
 .cv-item {
     margin-bottom: 1.2em;
 }
