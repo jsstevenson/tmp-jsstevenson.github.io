@@ -37,7 +37,7 @@
     margin-bottom: 0.3rem;
 }
 
-#tag-list {
+.tag-list {
     list-style: none;
     padding-left: 0;
 }
@@ -48,28 +48,28 @@
     padding-right: 12px;
 }
 
-#icon-list {
+.icon-list {
     list-style: none;
     padding-left: 0;
 }
 
-#icon-list li {
+.icon-list li {
     display: inline;
     list-style-type: none;
     padding-right: 25px;
 }
 
-#icon-list li:last-child {
+.icon-list li:last-child {
     padding-right: 0px;
 }
 
-#project-icon-list {
+.project-icon-list {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0px;
 }
 
-#project-icon-list li {
+.project-icon-list li {
     display: inline;
     list-style-type: none;
     padding-right: 12px;
