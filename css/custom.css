@@ -140,5 +140,6 @@
 }
 
 .blockquote p {
-    border-left: 3px solid #ccc
+    border-left: 3px solid #ccc;
+    font-size: .9rem;
 }
