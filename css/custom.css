@@ -138,3 +138,7 @@
 .cv-desc ul {
     font-size: 0.9rem;
 }
+
+.blockquote blockquote {
+    border-left: 3px solid #ccc
+}
