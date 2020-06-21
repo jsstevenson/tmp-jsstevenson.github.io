@@ -139,6 +139,6 @@
     font-size: 0.9rem;
 }
 
-.blockquote blockquote {
+.blockquote p {
     border-left: 3px solid #ccc
 }
