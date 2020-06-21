@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../../css/custom.css">
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
+
+  <title>bssg: Basic Static Site Generator</title>
+</head>
+
+<body>
+  <div class="container body-container">
+<!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../../../index.html">James Stevenson</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../../../projects.html">Projects</a>
+            </li>
+            <!--blog-dropdown-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../../../blog/recent.html" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Blog
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../../../blog/recent.html">Current</a>
+                <div class="dropdown-divider"></div>
+                <!--monthlist-->
+<a class="dropdown-item" href="../../../blog/2020/June.html">June 2020</a>
+<a class="dropdown-item" href="../../../blog/2020/May.html">May 2020</a>
+                <!--monthlist-->
+            </div>
+            </li>
+            <!--/blog-dropdown-->
+            </ul>
+        </div>
+    </nav>
+<!--/navbar-->
+
+
+
+    <div class="jumbotron jumbotron-fluid jumbotron-post">
+    <div class="container">
+        <h2>bssg: Basic Static Site Generator</h2>
+        <hr class="my-4">
+        May 21 2020
+        <ul class="tag-list"><li><a href="../../tag/projects.html">#projects</a></li><li><a href="../../tag/bssg.html">#bssg</a></li></ul>
+    </div>
+</div>
+<div><div class="card-body"><p><strong>GitHub repo available <a href="https://github.com/jsstevenson/bssg">here</a></strong></p>
+<p>My personal website has undergone a number of evolutions - it started as a standard Wordpress template intended to house my philosophy and rhetoric work, and then went through a conversion to Django and my own original HTML and CSS before going dark (I didn't feel like paying web hosting fees anymore). I thought my blogging days were behind me, but as I've found myself scribbling in Neovim about data analysis and CS education, I've succumbed to the urge to post the takes online.</p>
+<p>Still, paying for web hosting sucks, and I thought it would be fun to throw something together myself rather than pulling out <a href="https://jekyllrb.com/">Jekyll</a>; hence, the <a href="https://github.com/jsstevenson/bssg">Basic Static Site Generator (BSSG)</a> was born. It's fairly straightforward Python, using middle-of-the-road string replacement strategies to load templates for a few different HTML elements and populate them with content generated with <a href="https://github.com/lepture/mistune">Mistune</a> from markdown files.</p>
+<p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/bssg-screenshot.png" alt="Screenshot of my site&#39;s post index, which you are presumably seeing already"></p>
+<p>I am not a front-end developer and don't pretend to be, so I took the easy way out and grabbed some basic <a href="https://getbootstrap.com/">Bootstrap</a> material to start with. It would, however, be pretty trivial to rewrite any HTML/CSS framework to work with the design elements that bssg expects.</p></div></div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
