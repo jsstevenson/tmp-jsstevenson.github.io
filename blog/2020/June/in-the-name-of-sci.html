@@ -9,19 +9,19 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="../../../css/custom.css">
 
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
 
-  <title>recent posts</title>
+  <title>In the name of science: Solarized (Dark) for Twitter</title>
 </head>
 
 <body>
   <div class="container body-container">
 <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../index.html">James Stevenson</a>
+        <a class="navbar-brand" href="../../../index.html">James Stevenson</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,20 +30,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../projects.html">Projects</a>
+                <a class="nav-link" href="../../../projects.html">Projects</a>
             </li>
             <!--blog-dropdown-->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="../blog/recent.html" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle" href="../../../blog/recent.html" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Blog
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../blog/recent.html">Current</a>
+                    <a class="dropdown-item" href="../../../blog/recent.html">Current</a>
                 <div class="dropdown-divider"></div>
                 <!--monthlist-->
-<a class="dropdown-item" href="../blog/2020/June.html">June 2020</a>
-<a class="dropdown-item" href="../blog/2020/May.html">May 2020</a>
+<a class="dropdown-item" href="../../../blog/2020/June.html">June 2020</a>
+<a class="dropdown-item" href="../../../blog/2020/May.html">May 2020</a>
                 <!--monthlist-->
             </div>
             </li>
@@ -56,39 +56,17 @@
 
 
     <div class="jumbotron jumbotron-fluid jumbotron-post">
-  <div class="container">
-      <h2>Recent Posts</h2>
-  </div>
+    <div class="container">
+        <h2>In the name of science: Solarized (Dark) for Twitter</h2>
+        <hr class="my-4">
+        June 24 2020
+        <ul class="tag-list"><li><a href="../../tag/css.html">#css</a></li><li><a href="../../tag/useless.html">#useless</a></li></ul>
+    </div>
 </div>
-<div class="card">
-  <div class="card-body">
-      <h5 class="card-title"><a href="../blog/2020/June/in-the-name-of-sci.html">In the name of science: Solarized (Dark) for Twitter</a></h5>
-      <h6 class="card-subtitle mb-2 text-muted">June 24 2020</h6>
-      <p class="card-text"><i>I ported the Solarized (Dark) theme to Twitter via Firefox custom stylesheets, because why not?</i></p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-      <h5 class="card-title"><a href="../blog/2020/June/two-maxims-of-nota.html">Two maxims of notational structure effects</a></h5>
-      <h6 class="card-subtitle mb-2 text-muted">June 20 2020</h6>
-      <p class="card-text"><i>From Usability Analysis of Visual Programming Environments: a cognitive dimensions framework by T.R.C Green and M. Petre</i></p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-      <h5 class="card-title"><a href="../blog/2020/May/language-syntax-re.html">Language syntax reference: type declaration and annotation</a></h5>
-      <h6 class="card-subtitle mb-2 text-muted">May 26 2020</h6>
-      <p class="card-text"><i>A brief overview of type syntax across programming languages</i></p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-      <h5 class="card-title"><a href="../blog/2020/May/bssg-basic-static.html">bssg: Basic Static Site Generator</a></h5>
-      <h6 class="card-subtitle mb-2 text-muted">May 21 2020</h6>
-      <p class="card-text"><i>A simple static site generator, written in Python, to give form to my ramblings</i></p>
-  </div>
-</div>
-
+<div><div class="card-body"><p>This one has been on mind for a while: what would a Solarized Twitter look like? The answer, it turns out, is about the same as every other instantiation of Solarized:</p>
+<p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/twitter-solarized-screenshot.png" alt="The results!"></p>
+<p>My knowledge of CSS is scant - it doesn't go much further than the standard selection rules and core styling attributes - but Firefox's <a href="https://developer.mozilla.org/en-US/docs/Tools">always-reliable developer tools</a> proved more than adequate. I suspect that reverse-engineering a CSS file after it's been spit out by Sass/Less isn't particularly useful to anyone, but it made for a fun puzzle to spend an afternoon completing.</p>
+<p>The code, for what it's worth, is <a href="https://github.com/jsstevenson/twitter-solarized">posted to my GitHub</a>, though it sounds like the future of user-provided stylesheets in Firefox may be waning anyhow.</p></div></div>
   </div>
 
 
