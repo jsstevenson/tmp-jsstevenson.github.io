@@ -14,7 +14,7 @@
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
 
-  <title>Two maxims of notational structure effects</title>
+  <title>OSCAR-Clean: making OMSCS registration a little easier</title>
 </head>
 
 <body>
@@ -58,19 +58,16 @@
 
     <div class="jumbotron jumbotron-fluid jumbotron-post">
     <div class="container">
-        <h2>Two maxims of notational structure effects</h2>
+        <h2>OSCAR-Clean: making OMSCS registration a little easier</h2>
         <hr class="my-4">
-        June 20 2020
-        <ul class="tag-list"><li><a href="../../tag/programming-languages.html">#programming-languages</a></li><li><a href="../../tag/hci.html">#hci</a></li><li><a href="../../tag/retweets.html">#retweets</a></li></ul>
+        August 15 2020
+        <ul class="tag-list"><li><a href="../../tag/web-dev.html">#web-dev</a></li><li><a href="../../tag/omscs.html">#omscs</a></li><li><a href="../../tag/firefox.html">#firefox</a></li></ul>
     </div>
 </div>
-<div><div class="card-body"><p>From <a href="http://web.engr.oregonstate.edu/~burnett/CS589and584/CS589-papers/CogDimsPaper.pdf">Usability Analysis of Visual Programming Environments: a ‘cognitive dimensions’ framework</a> by T.R.C Green and M. Petre:</p>
-<blockquote class="blockquote">
-<p>Green [26],[34] and Vessey [85], [80] have independently developed bodies of research that demonstrate notationalstructure effects. Their work can be summarised in two maxims.</p>
-<p>Every notation highlights some kinds of information at the expense of obscuring other kinds. Not everything can be highlighted at once. If a language highlights dataflow than [sic] it may well obscure the control flow; if a language highlights the conditions under which actions are to be taken, as in a rule-based language, then it probably obscures the sequential ordering of actions. Corollary: part of the notation design problem is to make the obscured information more visible.</p>
-<p>When seeking information, there must be a cognitive fit between the mental representations and the external representation. If your mental representation is in control flow form, you will find a dataflow language hard to use; if you think iteratively, recursion will be hard.</p>
-<p>Taken together these maxims mean that a programming system (including the language and the programmer) will not be successful unless the language fits the tasks the programmer needs to do, and the programmer's mental representation fit the language representations.</p>
-</blockquote></div></div>
+<div><div class="card-body"><p>Registering for classes in my Master's program, the OMSCS at Georgia Tech, is <a href="https://www.reddit.com/r/OMSCS/comments/i8feey/is_registration_always_this_hectic_in_first_term/">famously</a> <a href="https://www.reddit.com/r/OMSCS/comments/i20qhk/no_cs_courses_available_for_registration/">complicated</a>. Accessing a list of available classes requires clicking and scrolling through a number of bizarrely-sized interfaces, and the result will still display a number of courses unavailable to students in the program. As with any bureaucracy, changing the system is <a href="https://www.reddit.com/r/OMSCS/comments/i5jtp8/is_registration_more_painful_than_it_needs_to_be/g0qlauh/">impossibly difficult</a>, so students instead learn to deal with the needless complexity (if nothing else, it has made for excellent HCI discussion fodder).</p>
+<p>This seems like a great use case for browser extensions. I've put together a pretty basic set of features, hiding unnecessary information and inaccessible courses, color-coding seating data by availability, and manually adding enrollment history to impart some idea of the likelihood that additional seats will open up as registration proceeds. This is my first attempt at using vanilla JS to interact with the DOM, and it made for a great learning experience regarding some of the additions to later ECMAScript iterations. The MDN documentation on the Firefox extension API can be a little confusing at times, and there are still features I'm confused by (at this point, I'm still not sure how to load local JSON resources), but the current product is entirely functional.</p>
+<p>The code is available <a href="https://github.com/jsstevenson/oscar-omscs">https://github.com/jsstevenson/oscar-omscs</a>. The extension itself can be installed <a href="https://github.com/jsstevenson/oscar-omscs/blob/master/extension-files/oscar_clean-0.2-fx.xpi?raw=true">https://github.com/jsstevenson/oscar-omscs/blob/master/extension-files/oscar_clean-0.2-fx.xpi?raw=true</a>.</p>
+<p>P.S. I started working on this the day of the <a href="https://arstechnica.com/information-technology/2020/08/firefox-maker-mozilla-lays-off-250-workers-says-covid-19-lowered-revenue/">Mozilla layoffs</a> -- I don't imagine this will be too hard to port to Chrome, but hopefully Mozilla is able to persevere.</p></div></div>
   </div>
 
 
