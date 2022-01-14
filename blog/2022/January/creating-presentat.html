@@ -75,7 +75,7 @@
 <p>Then, run the export command to initiate the reveal.js service:</p>
 <pre><code class="lang-shell">jupyter nbconvert my_example_notebook.ipynb --to slides --reveal-prefix reveal.js --post serve
 </code></pre>
-<p>The <code>--to</code> option actually accepts a number of possible output formats, including PDF (try <code>jupyter nbconvert --help</code> to see other options), but the <code>slides</code> argument targets reveal.js slides. <code>--reveal-prefix</code> should point to your local reveal.js directory, and <code>--post serve</code> specifies that the reveal.js <code>serve</code> command should be run following conversion.</p>
+<p>The <code>--to</code> option actually accepts a number of possible output formats, including PDF (try <code>jupyter nbconvert --help</code> to see other options), but the <code>slides</code> argument targets reveal.js slides. <code>--reveal-prefix</code> should point to your local reveal.js directory, and <code>--post serve</code> specifies that the reveal.js <code>serve</code> command should be run following conversion (a tab containing the live presentation should be opened on your default browser).</p>
 <p>By default, every cell is treated as a unique slide, but you have some basic control over how cells are turned into reveal.js objects. First, select the "slideshow" view from the menu:</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/jupyter-reveal-view-menu.png" alt="View -&gt; slides menu in Jupyter"></p>
 <p>You can choose from a few different slide types for each cell:</p>
@@ -84,13 +84,13 @@
 <p>See example output <a href="../../resources/jupyter-reveal-example.html">here</a>.</p>
 <p>A few closing notes:</p>
 <ul>
-<li><p>The nbconvert docs suggest reverting your reveal.js source to version 3.5 (via <code>git checkout 3.5.0</code> in the reveal.js repo). I found that this broke a bunch of core styling references -- the documentation is probably in need of an update there.</p>
+<li><p>The nbconvert docs suggest reverting your reveal.js source to version 3.5 (via <code>git checkout 3.5.0</code> in the reveal.js repo). I found that this broke some things and do not recommend it.</p>
 </li>
 <li><p>Jupyter notebooks don't immediately auto-save state, so remember to click the "save and checkpoint" button before exporting to ensure that you capture the most recent iteration of your work.</p>
 </li>
-<li><p>Theoretically the HTML output should be able to pull requisite scripting from a reveal.js CDN, but it didn't seem to work for me <code>¯\_(ツ)_/¯</code>.</p>
+<li><p>Theoretically the HTML output should be able to pull requisite scripting from a reveal.js CDN, but it didn't seem to work for me <code>¯\_(ツ)_/¯</code>. In order to get remote hosting to work for the example above I had to host the JS as well.</p>
 </li>
-<li><p>reveal is flexible about sizing for a lot of things, but will struggle with images (and probably code output), so make sure to double-check that any visual output looks right in a presentation beforehand (you may need to resize it)</p>
+<li><p>Critically, reveal is flexible about sizing for a lot of things, but will struggle with images (and probably code output), so make sure to double-check that any visual output looks right in a presentation beforehand (you may need to resize it)</p>
 </li>
 </ul></div></div>
   </div>
