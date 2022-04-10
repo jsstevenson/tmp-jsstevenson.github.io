@@ -201,7 +201,7 @@
 </tbody>
 </table>
 <p>This enables some progress:</p>
-<p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_progress" alt="Progress"></p>
+<p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_progress.png" alt="Progress"></p>
 <p>But tracebacks are still a catastrophe:</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_error_fail.png" alt="Lack of progress"></p>
 <p>You can use the <code>InteractiveShell</code> setting mentioned above to turn off these colors entirely (<code>nocolor</code>) or make them insane (<code>LightBG</code>). But, even though <a href="https://github.com/pygments/pygments/blob/c155bc4e52e313a51a03f9dcafa64b92701a6829/pygments/lexers/python.py#L714">Pygmentize does provide a lexer for tracebacks</a>, you can't use any kind of custom colors there. So, you're stuck.</p>
