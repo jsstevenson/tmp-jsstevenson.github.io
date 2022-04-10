@@ -71,11 +71,11 @@
 <div><div class="card-body"><p>The Jupyter notebook, <a href="https://www.youtube.com/watch?v=7jiPeIFXb6U">controversial though it may be</a>, is a core data exploration and experimentation platform for many in the data and scientific communities. In particular, its combination of REPL-like input and embedded HTML output make for an ideal means of generating and analyzing data tables and visualizations. This is great for sharing information with others -- and, it turns out, the Jupyter ecosystem includes tooling to quickly generate <a href="https://revealjs.com/">reveal.js</a> presentations using the included <a href="https://github.com/jupyter/nbconvert">nbconvert</a> library.</p>
 <h2>Getting started</h2>
 <p>For local service, you'll need to provide a path to the reveal.js library. It's probably easiest to clone it into the working directory of your notebook:</p>
-<pre><code class="lang-shell">git clone https://github.com/hakimel/reveal.js.git
-</code></pre>
+<div class="code-block"><pre><code class="lang-shell">git clone https://github.com/hakimel/reveal.js.git
+</code></pre></div>
 <p>Then, run the export command to initiate the reveal.js service:</p>
-<pre><code class="lang-shell">jupyter nbconvert my_example_notebook.ipynb --to slides --reveal-prefix reveal.js --post serve
-</code></pre>
+<div class="code-block"><pre><code class="lang-shell">jupyter nbconvert my_example_notebook.ipynb --to slides --reveal-prefix reveal.js --post serve
+</code></pre></div>
 <p>The <code>--to</code> option actually accepts a number of possible output formats, including PDF (try <code>jupyter nbconvert --help</code> to see other options), but the <code>slides</code> argument targets reveal.js slides. <code>--reveal-prefix</code> should point to your local reveal.js directory, and <code>--post serve</code> specifies that the reveal.js <code>serve</code> command should be run following conversion (a tab containing the live presentation should be opened on your default browser).</p>
 <p>By default, every cell is treated as a unique slide, but you have some basic control over how cells are turned into reveal.js objects. First, select the "slideshow" view from the menu:</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/jupyter-reveal-view-menu.png" alt="View -&gt; slides menu in Jupyter"></p>
