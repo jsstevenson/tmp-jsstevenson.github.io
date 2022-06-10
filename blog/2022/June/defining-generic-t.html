@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../../css/custom.css">
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
+
+  <title>Defining generic type annotations dynamically</title>
+</head>
+
+<body>
+  <div class="container body-container">
+<!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../../../index.html">James Stevenson</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../../../projects.html">Projects</a>
+            </li>
+            <!--blog-dropdown-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../../../blog/recent.html" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Blog
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../../../blog/recent.html">Current</a>
+                <div class="dropdown-divider"></div>
+                <!--monthlist-->
+<a class="dropdown-item" href="../../../blog/2022/June.html">June 2022</a>
+<a class="dropdown-item" href="../../../blog/2022/April.html">April 2022</a>
+<a class="dropdown-item" href="../../../blog/2022/January.html">January 2022</a>
+<a class="dropdown-item" href="../../../blog/2021/September.html">September 2021</a>
+<a class="dropdown-item" href="../../../blog/2021/January.html">January 2021</a>
+<a class="dropdown-item" href="../../../blog/2020/August.html">August 2020</a>
+<a class="dropdown-item" href="../../../blog/2020/June.html">June 2020</a>
+<a class="dropdown-item" href="../../../blog/2020/May.html">May 2020</a>
+                <!--monthlist-->
+            </div>
+            </li>
+            <!--/blog-dropdown-->
+            </ul>
+        </div>
+    </nav>
+<!--/navbar-->
+
+
+
+    <div class="jumbotron jumbotron-fluid jumbotron-post">
+    <div class="container">
+        <h2>Defining generic type annotations dynamically</h2>
+        <hr class="my-4">
+        June 10 2022
+        <ul class="tag-list"><li><a href="../../tag/python.html">#python</a></li><li><a href="../../tag/types.html">#types</a></li></ul>
+    </div>
+</div>
+<div><div class="card-body"><p>This will be a short one. Python's <a href="https://docs.python.org/3/library/typing.html">typing</a> module provides classes and utilities for progressively defining and annotating object types, mostly in service of static analysis tools like <a href="http://mypy-lang.org/">Mypy</a>. Some enterprising folks have devised ways to make use of them at runtime, though, with <a href="https://github.com/samuelcolvin/pydantic">Pydantic</a> probably being the highest-profile example.</p>
+<p>Of course, if you're employing type annotations at runtime, then there's all sorts of interesting things you could do with them. Maybe, for example, you want to generate a Pydantic class with a slot whose type is based on some behavior elsewhere in the module.</p>
+<div class="code-block"><pre><code class="lang-python">import pydantic
+t_0 = int
+class Point(pydantic.BaseModel):
+    x: t_0
+    y: t_0
+</code></pre></div>
+<p>Predictably, you can provide these as arguments to generic types as well:</p>
+<div class="code-block"><pre><code class="lang-python">class Point(pydantic.BaseModel):
+    tuplet: List[t_0]
+</code></pre></div>
+<p>All of this is opaque to any type checker, of course (you'd use <code>typing.TypeVar</code> for cases like relating generic function inputs and outputs, but that detaches you from the actual type classes in the above use-case).</p>
+<p>What's interesting, however, is the behavior required to dynamically provide a collection of types. This won't work:</p>
+<div class="code-block"><pre><code class="lang-python">list_of_types_from_user = [int, str, float]
+dynamic_list_type = pydantic.Union[list_of_types_from_user]
+# TypeError: Parameters to generic types must be types. Got [&lt;class &#39;int&#39;&gt;, &lt;class &#39;str&#39;&gt;, &lt;class &#39;float&#39;&gt;].
+</code></pre></div>
+<p>If you aren't used to some of the specifics of the Python type system, that error can be a little confusing (and I think the lower case <code>type</code> feels a little imprecise). Maybe you'd think that we need to ensure we are dealing with <code>Types</code>. That won't work either:</p>
+<div class="code-block"><pre><code class="lang-python">new_list_of_types = [typing.Type[int], typing.Type[str], typing.Type[float]]
+# TypeError: Union[arg, ...]: each arg must be a type. Got [typing.Type[int], typing.Type[str], typing.Type[float].
+</code></pre></div>
+<p>The real answer is much simpler. Contrary to the uncareful reading of that TypeError, the problem isn't the members of the list. It's the list itself:</p>
+<div class="code-block"><pre><code class="lang-python">dynamic_list_type = pydantic.Union[tuple(list_of_types_from_user)]  # using a tuple instead
+</code></pre></div>
+<p>I skimmed the docs and relevant PEPs (<a href="https://peps.python.org/pep-0483/">483</a>, <a href="https://peps.python.org/pep-0483/">484</a>, etc) and didn't catch any mention of this behavior, but it makes sense. Tuples, as immutable, are semantically understood to have meaningful positions and orderings. This makes them a good fit for providing arguments to <code>Dict</code>, where the first type denotes the keys and the second denotes values. I don't <em>think</em> order or positioning matters for Unions, but I've been wrong before. And while we often take it for granted in Python that behavior from one iterable will generalize to all of them, it's easy to imagine why, e.g., the <code>Set</code> would be unusable in this context.</p>
+<p>If you're wondering whether there's anything special happening behind the scenes -- there's not. The <a href="https://github.com/python/cpython/blob/f20a6a54fb041507a334ad71706974960d1b473f/Lib/typing.py#L649">implementation</a> of <code>Union</code> in <code>typing</code> just works on tuples and tuples alone:</p>
+<div class="code-block"><pre><code>def Union(self, parameters):
+    ...
+    if not isinstance(parameters, tuple):
+        parameters = (parameters,)
+    msg = "Union[arg, ...]: each arg must be a type."
+    parameters = tuple(_type_check(p, msg) for p in parameters)
+    ...
+    if len(parameters) == 1:
+        return parameters[0]
+    if len(parameters) == 2 and type(None) in parameters:
+        return _UnionGenericAlias(self, parameters, name="Optional")
+    return _UnionGenericAlias(self, parameters)
+</code></pre></div>
+<p>As a side note, if you only provide a single type value to a Union, a type checker like Pyright will usually give you an error about Union requiring &gt;1 arguments. In practice, as you can see above, Python instead casts it down to that type alone:</p>
+<div class="code-block"><pre><code class="lang-python">typing.Union[t_0]
+# &lt;class &#39;int&#39;&gt;
+</code></pre></div></div></div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
