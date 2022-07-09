@@ -14,7 +14,7 @@
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
 
-  <title>Two maxims of notational structure effects</title>
+  <title>Oxley: Building Pydantic classes from JSONschema at runtime</title>
 </head>
 
 <body>
@@ -64,19 +64,15 @@
 
     <div class="jumbotron jumbotron-fluid jumbotron-post">
     <div class="container">
-        <h2>Two maxims of notational structure effects</h2>
+        <h2>Oxley: Building Pydantic classes from JSONschema at runtime</h2>
         <hr class="my-4">
-        June 20 2020
-        <ul class="tag-list"><li><a href="../../tag/programming-languages.html">#programming-languages</a></li><li><a href="../../tag/hci.html">#hci</a></li><li><a href="../../tag/retweets.html">#retweets</a></li></ul>
+        July 7 2022
+        <ul class="tag-list"><li><a href="../../tag/python.html">#python</a></li><li><a href="../../tag/oxley.html">#oxley</a></li></ul>
     </div>
 </div>
-<div><div class="card-body"><p>From <a href="http://web.engr.oregonstate.edu/~burnett/CS589and584/CS589-papers/CogDimsPaper.pdf">Usability Analysis of Visual Programming Environments: a ‘cognitive dimensions’ framework</a> by T.R.C Green and M. Petre:</p>
-<p>*<strong>blockquote*</strong></p>
-<p>Green [26],[34] and Vessey [85], [80] have independently developed bodies of research that demonstrate notationalstructure effects. Their work can be summarised in two maxims.</p>
-<p>Every notation highlights some kinds of information at the expense of obscuring other kinds. Not everything can be highlighted at once. If a language highlights dataflow than [sic] it may well obscure the control flow; if a language highlights the conditions under which actions are to be taken, as in a rule-based language, then it probably obscures the sequential ordering of actions. Corollary: part of the notation design problem is to make the obscured information more visible.</p>
-<p>When seeking information, there must be a cognitive fit between the mental representations and the external representation. If your mental representation is in control flow form, you will find a dataflow language hard to use; if you think iteratively, recursion will be hard.</p>
-<p>Taken together these maxims mean that a programming system (including the language and the programmer) will not be successful unless the language fits the tasks the programmer needs to do, and the programmer's mental representation fit the language representations.</p>
-<p>*<strong>end-blockquote*</strong></p></div></div>
+<div><div class="card-body"><p>I've just pushed version 0.0.1 of <a href="https://github.com/jsstevenson/oxley/">Oxley</a>, a Python package that ingests JSONschema and dynamically constructs <a href="https://github.com/samuelcolvin/pydantic">Pydantic</a> classes and their attendant features, including runtime data validation, schema generation, and interoperability with web frameworks like <a href="https://fastapi.tiangolo.com/">FastAPI</a>. This is the first package I've published on PyPI that I've entirely self-produced, and I'm excited to see where it goes.</p>
+<p>The niche is a simple one: data streams are places of chaos, but forcing adherance to external schemas can ensure some kinds of correctness and enhance interoperability with other sources. JSONschema is a pretty good framework for writing schema definitions, and some solutions (e.g. <a href="https://github.com/cwacek/python-jsonschema-objects">Python-JSONschema-Objects</a>) enable easy and relatively well-featured runtime validation in Python environments. To my knowledge, though, Oxley is the first to employ Pydantic in this validation structure, which is great if you're working on something like a FastAPI endpoint (as we often do in the <a href="https://github.com/GenomicMedLab">Wagner lab</a>). Even beyond standing up APIs, Pydantic has cemented itself as a Python developer favorite, and I think targeting its core functionality makes sense for fully fleshing out the possibilities of validation-by-schema.</p>
+<p>My current feature target is to fully represent everyting in the <a href="https://vrs.ga4gh.org/en/stable/">Variant Representation Specification</a>, simply because it's a prominent part of our work in the <a href="https://github.com/GenomicMedLab">Wagner lab</a>, but I'm also interested in covering other components of the 2020 spec (and earlier iterations as well, eventually). Pull requests welcome.</p></div></div>
   </div>
 
 
