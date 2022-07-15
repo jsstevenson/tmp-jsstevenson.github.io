@@ -107,53 +107,121 @@
 </code></pre></div>
 <p><code>InteractiveShell.colors</code> sets a general color scheme, affecting input syntax highlighting and feedback, but only offers four theme options. <code>TerminalInteractiveShell.highlighting_style</code> (and <code>TerminalInteractiveShell.highlighting_style_overrides</code>) provide many more choices by allowing the user to specify the colors that IPython provides to <a href="https://pygments.org/">Pygments</a> for highlightingtext, but can't alter the colors used in feedback text (eg exception tracebacks).</p>
 <p>Now, the Pygments stuff is pretty great. It's a regex-based highlighter, which means anyone used to tools like <a href="https://tree-sitter.github.io/tree-sitter/syntax-highlighting">Treesitter</a> will be a little disappointed, but it still affords a decent amount of granularity for color choices, and lets you define general token classes (like Number) and then provide different selections for subcomponents (like Number.Float). I couldn't find a master list of token types used in the Python lexer, though, so I had to reconstruct an approximation from the <a href="https://github.com/pygments/pygments/blob/c155bc4e52e313a51a03f9dcafa64b92701a6829/pygments/lexers/python.py#L28">source code</a>:</p>
-<p>| Token               | What's included |
-| ---                 | --- |
-| Text                | Catch-all for anything not otherwise defined |
-| String              | Includes multiline comments, too |
-| String.Escape       | Escape sequences within strings |
-| String.Interpol     | The brackets in f-strings |
-| Number              | All numbers |
-| Number.Integer      | Ints |
-| Number.Float        | Floats |
-| Number.Bin          | Binary numbers |
-| Number.Oct          | Octals |
-| Number.Hex          | Hex values |
-| Comment             | Single-line comments |
-| Keyword             | Lots of members -- stuff like <code>def</code>, <code>class</code>, <code>True</code> and <code>False</code>, <code>if</code>/<code>elif</code>/<code>else</code> etc. |
-| Keyword.Constant    | <code>True</code>, <code>False</code>, and <code>None</code> |
-| Keyword.Reserved    | A few core tokens like <code>except</code>, <code>finally</code>, <code>if</code>, <code>raise</code>, <code>while</code>, etc |
-| Keyword.Namespace   | <code>import</code>, and <code>from</code>/<code>import</code> |
-| Operator            | Everything you'd expect, and also the Walrus |
-| Operator.Word       | <code>in</code>, <code>is</code>, <code>and</code>, <code>or</code>, <code>not</code> |
-| Punctuation         | Brackets and parens |
-| Name.Builtin        | Builtin functions like <code>all()</code>, <code>max()</code>, <code>iter()</code> |
-| Name.Builtin.Pseudo | Stuff like <code>self</code>, <code>Ellipsis</code>, <code>NotImplemented</code>, <code>cls</code> |
-| Name.Exception      | All of the builtin Exception types |
-| Name.Function       | the name of the function in the definition |
-| Name.Function.Magic | Builtin dunder methods |
-| Name.Variable.Magic | Builtin dunder object attributes |
-| Name.Decorator      | Both the <code>@</code> and the decorator name |
-| Name.Class          | I think this should be the name in the class definition but couldn't confirm experimentally |</p>
+<table>
+<thead>
+<tr>
+  <th>Token</th>
+  <th>What's included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Text</td>
+  <td>Catch-all for anything not otherwise defined</td>
+</tr>
+<tr>
+  <td>String</td>
+  <td>Includes multiline comments, too</td>
+</tr>
+<tr>
+  <td>String.Escape</td>
+  <td>Escape sequences within strings</td>
+</tr>
+<tr>
+  <td>String.Interpol</td>
+  <td>The brackets in f-strings</td>
+</tr>
+<tr>
+  <td>Number</td>
+  <td>All numbers</td>
+</tr>
+<tr>
+  <td>Number.Integer</td>
+  <td>Ints</td>
+</tr>
+<tr>
+  <td>Number.Float</td>
+  <td>Floats</td>
+</tr>
+<tr>
+  <td>Number.Bin</td>
+  <td>Binary numbers</td>
+</tr>
+<tr>
+  <td>Number.Oct</td>
+  <td>Octals</td>
+</tr>
+<tr>
+  <td>Number.Hex</td>
+  <td>Hex values</td>
+</tr>
+<tr>
+  <td>Comment</td>
+  <td>Single-line comments</td>
+</tr>
+<tr>
+  <td>Keyword</td>
+  <td>Lots of members -- stuff like <code>def</code>, <code>class</code>, <code>True</code> and <code>False</code>, <code>if</code>/<code>elif</code>/<code>else</code> etc.</td>
+</tr>
+<tr>
+  <td>Keyword.Constant</td>
+  <td><code>True</code>, <code>False</code>, and <code>None</code></td>
+</tr>
+<tr>
+  <td>Keyword.Reserved</td>
+  <td>A few core tokens like <code>except</code>, <code>finally</code>, <code>if</code>, <code>raise</code>, <code>while</code>, etc</td>
+</tr>
+<tr>
+  <td>Keyword.Namespace</td>
+  <td><code>import</code>, and <code>from</code>/<code>import</code></td>
+</tr>
+<tr>
+  <td>Operator</td>
+  <td>Everything you'd expect, and also the Walrus</td>
+</tr>
+<tr>
+  <td>Operator.Word</td>
+  <td><code>in</code>, <code>is</code>, <code>and</code>, <code>or</code>, <code>not</code></td>
+</tr>
+<tr>
+  <td>Punctuation</td>
+  <td>Brackets and parens</td>
+</tr>
+<tr>
+  <td>Name.Builtin</td>
+  <td>Builtin functions like <code>all()</code>, <code>max()</code>, <code>iter()</code></td>
+</tr>
+<tr>
+  <td>Name.Builtin.Pseudo</td>
+  <td>Stuff like <code>self</code>, <code>Ellipsis</code>, <code>NotImplemented</code>, <code>cls</code></td>
+</tr>
+<tr>
+  <td>Name.Exception</td>
+  <td>All of the builtin Exception types</td>
+</tr>
+<tr>
+  <td>Name.Function</td>
+  <td>the name of the function in the definition</td>
+</tr>
+<tr>
+  <td>Name.Function.Magic</td>
+  <td>Builtin dunder methods</td>
+</tr>
+<tr>
+  <td>Name.Variable.Magic</td>
+  <td>Builtin dunder object attributes</td>
+</tr>
+<tr>
+  <td>Name.Decorator</td>
+  <td>Both the <code>@</code> and the decorator name</td>
+</tr>
+<tr>
+  <td>Name.Class</td>
+  <td>I think this should be the name in the class definition but couldn't confirm experimentally</td>
+</tr>
+</tbody>
+</table>
 <p>This enables some progress:</p>
-<p>Language    | Release<code>*</code>                                            | Style
----         | ---                                                   | ---
-ALGOL 68    | 1968                                                  | Prefix
-Pascal      | 1970                                                  | Punctuation
-C           | 1973                                                  | Prefix
-Standard ML | 1983                                                  | Punctuation
-Objective C | 1984                                                  | Prefix
-C++         | 1985                                                  | Prefix
-Java        | 1995                                                  | Prefix
-C#          | 2000                                                  | Prefix
-Scala       | 2004                                                  | Punctuation, Arrow
-Python      | <a href="https://www.python.org/dev/peps/pep-3107/">2006</a><code>**</code> | Punctuation, Arrow
-Go          | 2009                                                  | Postfix
-Rust        | 2010                                                  | Punctuation, Arrow
-Kotlin      | 2011                                                  | Punctuation
-TypeScript  | 2012                                                  | Punctuation
-Elm         | 2012                                                  | Prefix
-Swift       | 2014                                                  | Punctuation, Arrow</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_progress.png" alt="Progress" /></p>
 <p>But tracebacks are still a catastrophe:</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_error_fail.png" alt="Lack of progress" /></p>

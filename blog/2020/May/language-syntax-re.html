@@ -90,43 +90,201 @@
 </div>
 <div><div class="card-body"><p>For CS 7650 Human-Computer Interaction this semester, I'm doing a design analysis of type annotation syntax in programming languages. My motivation relates to the recent (well, not actually recent, but only now old enough that it's starting to see much use) introduction of optional type annotation and hinting in Python. Having started programming in Python 3.5, I didn't see the point of explicit type assignment in language syntax - it seemed like confusing extraneous syntax that created additional hurdles to writing correct code. I didn't see the light until taking a <a href="https://courses.cs.washington.edu/courses/cse373/18au/">Java course</a>; in fact, I didn't notice how much I'd come to appreciate the power of static type checking until I started to rewrite some basic data structures in <a href="https://github.com/jsstevenson/data_structures">Python</a> as a practice exercise, and found myself internally stressing at all the havok duck typing could be wreaking. What had seemed like an encumbrance in Java quickly became a necessity.</p>
 <p>Returning to HCI, my interest in Python's addition of type annotation lies in its syntactical choices. As far as I can tell, there's nothing in the Python parser that would necessarily prevent it from using C-style declarations, and presumably it could've used a colon after its argument list to denote a return type, as in TypeScript, rather than the ASCII arrow. I don't think any of these strategies are necessarily wrong or right, but it's infinitely curious to me how different languages demonstrate consistency in some areas and diverge in others. To visualize these differences, I did a quick poll of how different languages declare variable types and function signatures. (The wise among us will note the absence of Haskell. It confuses me. I am working on it.)</p>
-<p>Language    | Variable            | Function                             | Mandatory?
----         | ---                 | ---                                  | ---
-Rust        | <code>let foo: Bar = 0</code>  | <code>fn baz(foo: Bar) -&gt; Bar</code>            | Inferred
-Python      | <code>foo: Bar = 0</code>      | <code>def baz(foo: Bar) -&gt; Bar</code>           | Optional
-Scala       | <code>val foo: Bar = 0</code>  | <code>def baz(foo: Bar) =&gt; Bar</code>           | Inferred
-TypeScript  | <code>let foo: Bar = 0</code>  | <code>baz(foo: Bar): Bar</code>                 | Inferred
-C/C++       | <code>Bar foo = 0</code>       | <code>Bar baz(Bar foo)</code>                   | Mandatory
-C-Sharp     | <code>Bar foo = 0</code>       | <code>Bar baz(Bar foo)</code>                   | Mandatory
-Swift       | <code>var foo: Bar = 0</code>  | <code>func baz(_ foo: Bar) -&gt; Bar</code>        | Inferred
-Java        | <code>Bar foo = 0</code>       | <code>Bar baz(Bar foo)</code>                   | Mandatory
-Kotlin      | <code>val foo = 0</code>       | <code>fun baz(foo: Bar): Bar</code>             | Inferred for variables
-Objective C | <code>Bar foo = 0</code>       | <code>Bar baz(Bar foo)</code>                   | Mandatory
-Go          | <code>var foo Bar = 0</code>   | <code>func baz(foo Bar) (return_foo Bar)</code> | Inferred?
-Standard ML | <code>val foo = 0 : Bar</code> | <code>fun baz(foo : Bar)</code>                 | Inferred
-ALGOL 68    | <code>Bar foo = 0</code>       | <code>proc baz = (Bar foo) Bar</code>           | Mandatory
-Pascal      | <code>var foo: Bar</code>      | <code>procedure baz(var foo : Bar)</code>       | Mandatory
-Elm         | <code>foo: Bar</code>          | (no type annotation)                 | Mandatory
-<code>*</code><em>I've never used a good 2/3 of these languages and may well be messing up some of the details</em></p>
+<table>
+<thead>
+<tr>
+  <th>Language</th>
+  <th>Variable</th>
+  <th>Function</th>
+  <th>Mandatory?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Rust</td>
+  <td><code>let foo: Bar = 0</code></td>
+  <td><code>fn baz(foo: Bar) -&gt; Bar</code></td>
+  <td>Inferred</td>
+</tr>
+<tr>
+  <td>Python</td>
+  <td><code>foo: Bar = 0</code></td>
+  <td><code>def baz(foo: Bar) -&gt; Bar</code></td>
+  <td>Optional</td>
+</tr>
+<tr>
+  <td>Scala</td>
+  <td><code>val foo: Bar = 0</code></td>
+  <td><code>def baz(foo: Bar) =&gt; Bar</code></td>
+  <td>Inferred</td>
+</tr>
+<tr>
+  <td>TypeScript</td>
+  <td><code>let foo: Bar = 0</code></td>
+  <td><code>baz(foo: Bar): Bar</code></td>
+  <td>Inferred</td>
+</tr>
+<tr>
+  <td>C/C++</td>
+  <td><code>Bar foo = 0</code></td>
+  <td><code>Bar baz(Bar foo)</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>C-Sharp</td>
+  <td><code>Bar foo = 0</code></td>
+  <td><code>Bar baz(Bar foo)</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>Swift</td>
+  <td><code>var foo: Bar = 0</code></td>
+  <td><code>func baz(_ foo: Bar) -&gt; Bar</code></td>
+  <td>Inferred</td>
+</tr>
+<tr>
+  <td>Java</td>
+  <td><code>Bar foo = 0</code></td>
+  <td><code>Bar baz(Bar foo)</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>Kotlin</td>
+  <td><code>val foo = 0</code></td>
+  <td><code>fun baz(foo: Bar): Bar</code></td>
+  <td>Inferred for variables</td>
+</tr>
+<tr>
+  <td>Objective C</td>
+  <td><code>Bar foo = 0</code></td>
+  <td><code>Bar baz(Bar foo)</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>Go</td>
+  <td><code>var foo Bar = 0</code></td>
+  <td><code>func baz(foo Bar) (return_foo Bar)</code></td>
+  <td>Inferred?</td>
+</tr>
+<tr>
+  <td>Standard ML</td>
+  <td><code>val foo = 0 : Bar</code></td>
+  <td><code>fun baz(foo : Bar)</code></td>
+  <td>Inferred</td>
+</tr>
+<tr>
+  <td>ALGOL 68</td>
+  <td><code>Bar foo = 0</code></td>
+  <td><code>proc baz = (Bar foo) Bar</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>Pascal</td>
+  <td><code>var foo: Bar</code></td>
+  <td><code>procedure baz(var foo : Bar)</code></td>
+  <td>Mandatory</td>
+</tr>
+<tr>
+  <td>Elm</td>
+  <td><code>foo: Bar</code></td>
+  <td>(no type annotation)</td>
+  <td>Mandatory</td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code><em>I've never used a good 2/3 of these languages and may well be messing up some of the details</em></p>
 <p>What sticks out is a pretty clear division between &quot;C-style&quot; syntax (where the type name is positioned like a prefix, immediately prior to the function or variable name) and punctuation-based syntax, where colons or arrows are used to denote a type relationship with the identifier. Anyone with a cursory knowledge of programming language history will recognize a pattern for what languages adopt which style (and may also notice a pattern regarding the use of the ASCII arrow for function return types).</p>
-<p>Language    | Release<code>*</code>                                            | Style
----         | ---                                                   | ---
-ALGOL 68    | 1968                                                  | Prefix
-Pascal      | 1970                                                  | Punctuation
-C           | 1973                                                  | Prefix
-Standard ML | 1983                                                  | Punctuation
-Objective C | 1984                                                  | Prefix
-C++         | 1985                                                  | Prefix
-Java        | 1995                                                  | Prefix
-C#          | 2000                                                  | Prefix
-Scala       | 2004                                                  | Punctuation, Arrow
-Python      | <a href="https://www.python.org/dev/peps/pep-3107/">2006</a><code>**</code> | Punctuation, Arrow
-Go          | 2009                                                  | Postfix
-Rust        | 2010                                                  | Punctuation, Arrow
-Kotlin      | 2011                                                  | Punctuation
-TypeScript  | 2012                                                  | Punctuation
-Elm         | 2012                                                  | Prefix
-Swift       | 2014                                                  | Punctuation, Arrow</p>
+<table>
+<thead>
+<tr>
+  <th>Language</th>
+  <th>Release<code>*</code></th>
+  <th>Style</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>ALGOL 68</td>
+  <td>1968</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>Pascal</td>
+  <td>1970</td>
+  <td>Punctuation</td>
+</tr>
+<tr>
+  <td>C</td>
+  <td>1973</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>Standard ML</td>
+  <td>1983</td>
+  <td>Punctuation</td>
+</tr>
+<tr>
+  <td>Objective C</td>
+  <td>1984</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>C++</td>
+  <td>1985</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>Java</td>
+  <td>1995</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>C#</td>
+  <td>2000</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>Scala</td>
+  <td>2004</td>
+  <td>Punctuation, Arrow</td>
+</tr>
+<tr>
+  <td>Python</td>
+  <td><a href="https://www.python.org/dev/peps/pep-3107/">2006</a><code>**</code></td>
+  <td>Punctuation, Arrow</td>
+</tr>
+<tr>
+  <td>Go</td>
+  <td>2009</td>
+  <td>Postfix</td>
+</tr>
+<tr>
+  <td>Rust</td>
+  <td>2010</td>
+  <td>Punctuation, Arrow</td>
+</tr>
+<tr>
+  <td>Kotlin</td>
+  <td>2011</td>
+  <td>Punctuation</td>
+</tr>
+<tr>
+  <td>TypeScript</td>
+  <td>2012</td>
+  <td>Punctuation</td>
+</tr>
+<tr>
+  <td>Elm</td>
+  <td>2012</td>
+  <td>Prefix</td>
+</tr>
+<tr>
+  <td>Swift</td>
+  <td>2014</td>
+  <td>Punctuation, Arrow</td>
+</tr>
+</tbody>
+</table>
 <p><code>*</code><em>The dates are fuzzy - who knows when in language development a decision is made about syntax - but the point is pretty clear</em></p>
 <p><em><code>**</code>Python, of course, didn't ship with annotation ability - PEP 3107 added annotion capabilities, and PEP 484 integrated their use for type hinting</em></p>
 <p>First, it's hard to miss the influence that ALGOL68 had on programming language history - Dennis Ritchie wrote at length on its significance in his development of C, and it's well-known that both Java and C# were designed in part to capture the interests of disaffected C programmers. I was, however, surprised to see that punctuation-style syntax has early roots as well, though. I think this speaks to the intuition on display with the colon operator: it's very easy for the brain to replace it with something like &quot;is a&quot; (e.g. &quot;foo is a String&quot;). I think this is a big appeal of the &quot;arrow&quot; operator, although it's curious to me that Scala's arrow uses different punctuation than subsequent languages (&lt;= vs &lt;-).</p>
