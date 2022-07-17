@@ -91,7 +91,7 @@
 <div><div class="card-body"><p>Whoever put a colorized prompt and syntax highlighting into IPython is a genius. The green-red back-and-forth between input and response makes scrolling back through a terminal session smooth and readable, and coloring individual tokens by semantic meaning is both informative and easy on the eyes.</p>
 <p>However, if you use any kind of a custom terminal theme, this experience gets bumpier. IPython will generally lean on the basic ANSI colors set by your terminal, but (at least in my case -- running zshell within Alacritty/Tmux) also summons a few colors that are definitely <em>not</em> in the specified color set, and can be pretty hard to read (bad) and ugly (obviously way worse).</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_default.png" alt="Default colors" /></p>
-<p>Some of these are coming from my terminal -- the light-green in the prompt, and the red traceback boundaries are correct. The dark green/bold, and especially the bolded blue in the traceback, are straight from IPython. And the latter is basically unreadable against my background.</p>
+<p>Some of these are coming from my terminal -- the light-green in the prompt, and the red traceback boundaries are correct. However, the dark green/bold, and especially the bolded blue in the traceback, are bypassing my terminal config, defined directly from IPython. And the blue, in particular, is basically unreadable against my shell background.</p>
 <p>There are a few out-of-the-box changes that can help, sort of. The <a href="https://ipython.readthedocs.io/en/stable/config/intro.html#setting-configurable-options">IPython config</a> provides a few options:</p>
 <div class="code-block"><pre><code class="language-python">## Set the color scheme (NoColor, Neutral, Linux, or LightBG).
 # c.InteractiveShell.colors = 'Neutral'
@@ -226,8 +226,7 @@
 <p>But tracebacks are still a catastrophe:</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_error_fail.png" alt="Lack of progress" /></p>
 <p>You can use the <code>InteractiveShell</code> setting mentioned above to turn off these colors entirely (<code>nocolor</code>) or make them insane (<code>LightBG</code>). But, even though <a href="https://github.com/pygments/pygments/blob/c155bc4e52e313a51a03f9dcafa64b92701a6829/pygments/lexers/python.py#L714">Pygmentize does provide a lexer for tracebacks</a>, you can't use any kind of custom colors there. So, you're stuck.</p>
-<p>On a lighter note,
-You can also configure the prompts, which is cool. The <a href="https://ipython.readthedocs.io/en/stable/config/details.html#custom-prompts">IPython config docs</a> are a bit better here than on the color scheme, although I think the <a href="https://github.com/ipython/ipython/blob/0e4d6390b2174fb1b352a082b72ad387ae696e87/IPython/terminal/prompts.py#L13">actual prompt file</a> is more informative than the example they point to.</p>
+<p>On another note, you can also configure the prompts, which is cool. The <a href="https://ipython.readthedocs.io/en/stable/config/details.html#custom-prompts">IPython config docs</a> are a bit better here than on the color scheme, although I think the <a href="https://github.com/ipython/ipython/blob/0e4d6390b2174fb1b352a082b72ad387ae696e87/IPython/terminal/prompts.py#L13">actual prompt file</a> is more informative than the example they point to.</p>
 <div class="code-block"><pre><code class="language-python3">from IPython.terminal.prompts import Prompts, Token
 
 class MyPrompt(Prompts):
@@ -237,9 +236,9 @@ class MyPrompt(Prompts):
 ## Class used to generate Prompt token for prompt_toolkit
 c.TerminalInteractiveShell.prompts_class = MyPrompt
 </code></pre></div>
-<p>Powerline glyphs like the above will work, but colorization using ANSI escape codes will... unfortunately not, which is unsurprising. You are at the whims of the Pygments tokens that you provide, and it's not clear to me whether there's any hope of overriding the token colors outside of the parent <code>InteractiveShell.colors</code> specification.</p>
+<p>Powerline glyphs like the above will work, but colorization using ANSI escape codes will... unfortunately not, which is unsurprising.</p>
 <p><img class="img-fluid img-thumbnail rounded mx-auto d-block" style="max-width: 85%" src="../../resources/ipython_prompt.png" alt="prompt fail" /></p>
-<p>Anyway, here's to hoping that someone jumps on this stuff in a future IPython PR.</p></div></div>
+<p>You are at the whims of the Pygments tokens that you provide, and it's not clear to me whether there's any hope of overriding the token colors outside of the parent <code>InteractiveShell.colors</code> specification. Anyway, here's to hoping that someone jumps on this stuff in a future IPython PR.</p></div></div>
   </div>
 
 
