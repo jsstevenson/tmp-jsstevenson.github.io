@@ -9,19 +9,19 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../css/custom.css">
+  <link rel="stylesheet" href="css/custom.css">
 
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
 
-  <title>Tag: data-visualization</title>
+  <title>software</title>
 </head>
 
 <body>
   <div class="container body-container">
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="../../index.html">James Stevenson</a>
+  <a class="navbar-brand" href="index.html">James Stevenson</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -37,16 +37,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../../software.html">Software</a>
+        <a class="nav-link" href="software.html">Software</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../../research.html">Research</a>
+        <a class="nav-link" href="research.html">Research</a>
       </li>
       <!--blog-dropdown-->
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
-          href="../../blog/recent.html"
+          href="blog/recent.html"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -56,20 +56,20 @@
           Blog
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="../../blog/recent.html"
+          <a class="dropdown-item" href="blog/recent.html"
             >Current</a
           >
           <div class="dropdown-divider"></div>
           <!--monthlist-->
-<a class="dropdown-item" href="../../blog/2022/July.html">July 2022</a>
-<a class="dropdown-item" href="../../blog/2022/June.html">June 2022</a>
-<a class="dropdown-item" href="../../blog/2022/April.html">April 2022</a>
-<a class="dropdown-item" href="../../blog/2022/January.html">January 2022</a>
-<a class="dropdown-item" href="../../blog/2021/September.html">September 2021</a>
-<a class="dropdown-item" href="../../blog/2021/January.html">January 2021</a>
-<a class="dropdown-item" href="../../blog/2020/August.html">August 2020</a>
-<a class="dropdown-item" href="../../blog/2020/June.html">June 2020</a>
-<a class="dropdown-item" href="../../blog/2020/May.html">May 2020</a>
+<a class="dropdown-item" href="blog/2022/July.html">July 2022</a>
+<a class="dropdown-item" href="blog/2022/June.html">June 2022</a>
+<a class="dropdown-item" href="blog/2022/April.html">April 2022</a>
+<a class="dropdown-item" href="blog/2022/January.html">January 2022</a>
+<a class="dropdown-item" href="blog/2021/September.html">September 2021</a>
+<a class="dropdown-item" href="blog/2021/January.html">January 2021</a>
+<a class="dropdown-item" href="blog/2020/August.html">August 2020</a>
+<a class="dropdown-item" href="blog/2020/June.html">June 2020</a>
+<a class="dropdown-item" href="blog/2020/May.html">May 2020</a>
           <!--monthlist-->
         </div>
       </li>
@@ -80,17 +80,63 @@
 <!--/navbar-->
 
 
-    <div class="jumbotron jumbotron-fluid jumbotron-post">
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px">
   <div class="container">
-      <h2>Posts: #data-visualization</h2>
+    <h2>Projects</h2>
   </div>
 </div>
+<!--/header-->
+<!--project preview-->
 <div class="card">
-  <div class="card-body post-list">
-      <h7 class="card-subtitle mb-2 text-muted">January 12 2022</h6>
-      <h5 class="card-title"><a href="../../blog/2022/January/creating-presentat.html">Creating presentations from Jupyter notebooks</a></h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="https://github.com/jsstevenson/oxley/">Oxley</a>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">Python</h6>
+    <p class="card-text">
+      Dynamically construct Pydantic classes from JSONschema at runtime.
+    </p>
+    <ul class="project-icon-list">
+      <li>
+        <a href="https://github.com/jsstevenson/oxley"
+          ><i class="far fa-file-code list-dot"></i>Code</a
+        >
+      </li>
+      <li>
+        <a href="blog/2022/July/oxley-building-py.html"
+          ><i class="far fa-file-alt list-dot"></i>Writeup</a
+        >
+      </li>
+    </ul>
   </div>
 </div>
+<!--/project preview-->
+<!--project preview-->
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="https://github.com/jsstevenson/nvim-tmux/">Nvim-Tmux</a>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">Python</h6>
+    <p class="card-text">
+      Neovim plugin for editing Tmux configuration and scripting files.
+    </p>
+    <ul class="project-icon-list">
+      <li>
+        <a href="https://github.com/jsstevenson/nvim-tmux"
+          ><i class="far fa-file-code list-dot"></i>Code</a
+        >
+      </li>
+      <li>
+        <a href="blog/2022/July/oxley-building-py.html"
+          ><i class="far fa-file-alt list-dot"></i>Writeup</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<!--/project preview-->
+
 
   </div>
 

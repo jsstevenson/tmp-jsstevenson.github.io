@@ -14,7 +14,7 @@
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/51d614d059.js" crossorigin="anonymous"></script>
 
-  <title>Two maxims of notational structure effects</title>
+  <title>Nvim-Tmux: Tools to Support Tmux Scripting and Configuration</title>
 </head>
 
 <body>
@@ -82,19 +82,19 @@
 
     <div class="jumbotron jumbotron-fluid jumbotron-post">
     <div class="container">
-        <h2>Two maxims of notational structure effects</h2>
+        <h2>Nvim-Tmux: Tools to Support Tmux Scripting and Configuration</h2>
         <hr class="my-4">
-        June 20 2020
-        <ul class="tag-list"><li><a href="../../tag/programming-languages.html">#programming-languages</a></li><li><a href="../../tag/hci.html">#hci</a></li><li><a href="../../tag/retweets.html">#retweets</a></li></ul>
+        July 7 2022
+        <ul class="tag-list"><li><a href="../../tag/neovim.html">#neovim</a></li><li><a href="../../tag/dev-tools.html">#dev-tools</a></li><li><a href="../../tag/lua.html">#lua</a></li><li><a href="../../tag/tmux.html">#tmux</a></li></ul>
     </div>
 </div>
-<div><div class="card-body"><p>From <a href="http://web.engr.oregonstate.edu/~burnett/CS589and584/CS589-papers/CogDimsPaper.pdf">Usability Analysis of Visual Programming Environments: a ‘cognitive dimensions’ framework</a> by T.R.C Green and M. Petre:</p>
-<p>*<strong>blockquote*</strong></p>
-<p>Green [26],[34] and Vessey [85], [80] have independently developed bodies of research that demonstrate notationalstructure effects. Their work can be summarised in two maxims.</p>
-<p>Every notation highlights some kinds of information at the expense of obscuring other kinds. Not everything can be highlighted at once. If a language highlights dataflow than [sic] it may well obscure the control flow; if a language highlights the conditions under which actions are to be taken, as in a rule-based language, then it probably obscures the sequential ordering of actions. Corollary: part of the notation design problem is to make the obscured information more visible.</p>
-<p>When seeking information, there must be a cognitive fit between the mental representations and the external representation. If your mental representation is in control flow form, you will find a dataflow language hard to use; if you think iteratively, recursion will be hard.</p>
-<p>Taken together these maxims mean that a programming system (including the language and the programmer) will not be successful unless the language fits the tasks the programmer needs to do, and the programmer's mental representation fit the language representations.</p>
-<p>*<strong>end-blockquote*</strong></p></div></div>
+<div><div class="card-body"><p>Is there a Tmux programming language? I don't know. Its scripting semantics are sufficiently complicated to fill <a href="https://leanpub.com/the-tao-of-tmux/">at least one book</a>, but at the end of the day, it's basically a weird bash subset, where there are still oodles of commands, but things like control flow are shoved into weird string operations that require escaping to spread across multiple lines. It's an abrasive but technically capable environment. I think.</p>
+<p>To make sense of this hellscape, I've been working on <a href="https://github.com/jsstevenson/nvim-tmux">Nvim-Tmux</a>, a Neovim-native Lua port/fork of <a href="https://github.com/tmux-plugins/vim-tmux">Vim-Tmux</a>. While most Tmux-related Neovim plugins focus on connecting the editor to the multiplexer - integrating window operations, using Tmux's command mode, etc. - Nvim-Tmux provides some tooling to assist in writing configurations and scripting in the Tmux &quot;language&quot;, such as it is. Some of it is basic: providing commands to continually re-source a <code>conf</code> file, for example, for live editing and feedback. Others are more aspirational: Nvim-Tmux lets you quickly pull up documentation for a command in a floating window with a single command, and I'm hoping to extend this to LSP hover-like functionality as well.</p>
+<p>Nvim-Tmux is written entirely in Lua, with only one or two calls to vanilla Vim commands. This has been quite a learning experience! It's very funny to search for a simple problem (say, string interpollation) in Lua and finding hits from World of Warcraft fan wikis among the top results. The extreme dynamic typing feels a little wobbly, and the challenge of printing tables in the native REPL is annoying, but I love that the community feels genuinely human-scale (a core tool like <a href="https://github.com/JohnnyMorganz/StyLua">Stylua</a> is written by a college student and only has 600 stars on GitHub), and the insanely minimal regex-like implementation grows on you once you <a href="https://www.lua.org/pil/20.1.html">understand its motivation</a>:</p>
+<blockquote>
+<p>Unlike several other scripting languages, Lua does not use POSIX regular expressions (regexp) for pattern matching. The main reason for this is size: A typical implementation of POSIX regexp takes more than 4,000 lines of code. This is bigger than all Lua standard libraries together. In comparison, the implementation of pattern matching in Lua has less than 500 lines. Of course, the pattern matching in Lua cannot do all that a full POSIX implementation does. Nevertheless, pattern matching in Lua is a powerful tool and includes some features that are difficult to match with standard POSIX implementations.</p>
+</blockquote>
+<p>I don't know if I'll ever find professional benefit from picking up a language that appears to be used chiefly by 15 year olds trying to make Minecraft mods, but I appreciate that Neovim chose something outside the somewhat weary circle of Python/JS scripting that dominates so many other editors.</p></div></div>
   </div>
 
 
