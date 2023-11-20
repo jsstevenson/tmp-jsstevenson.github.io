@@ -91,28 +91,28 @@
 </div>
 <div><div class="card-body"><p>Python's <a href="https://docs.python.org/3/library/typing.html">typing</a> module provides classes and utilities for progressively defining and annotating object types, mostly in service of static analysis tools like <a href="http://mypy-lang.org/">Mypy</a>. Some enterprising folks have devised ways to make use of them at runtime, though, with <a href="https://github.com/samuelcolvin/pydantic">Pydantic</a> probably being the highest-profile example.</p>
 <p>Of course, if you're employing type annotations at runtime, then there's all sorts of interesting things you could do with them. Maybe, for example, you want to generate a Pydantic class with a slot whose type is based on some behavior elsewhere in the module.</p>
-<pre><code class="lang-python">import pydantic
+<pre><code class="language-python">import pydantic
 t_0 = int
 class Point(pydantic.BaseModel):
     x: t_0
     y: t_0
 </code></pre>
 <p>Predictably, you can provide these as arguments to generic types as well:</p>
-<pre><code class="lang-python">class Point(pydantic.BaseModel):
+<pre><code class="language-python">class Point(pydantic.BaseModel):
     tuplet: List[t_0]
 </code></pre>
 <p>All of this is opaque to any type checker, of course (you'd use <code>typing.TypeVar</code> for cases like relating generic function inputs and outputs, but that detaches you from the actual type classes in the above use-case).</p>
 <p>What's interesting, however, is the behavior required to dynamically provide a collection of types. This won't work:</p>
-<pre><code class="lang-python">list_of_types_from_user = [int, str, float]
+<pre><code class="language-python">list_of_types_from_user = [int, str, float]
 dynamic_list_type = pydantic.Union[list_of_types_from_user]
-# TypeError: Parameters to generic types must be types. Got [&lt;class &#39;int&#39;&gt;, &lt;class &#39;str&#39;&gt;, &lt;class &#39;float&#39;&gt;].
+# TypeError: Parameters to generic types must be types. Got [&lt;class 'int'&gt;, &lt;class 'str'&gt;, &lt;class 'float'&gt;].
 </code></pre>
 <p>If you aren't used to some of the specifics of the Python type system, that error can be a little confusing (and I think the lower case <code>type</code> feels a little imprecise). Maybe you'd think that we need to ensure we are dealing with <code>Types</code>. That won't work either:</p>
-<pre><code class="lang-python">new_list_of_types = [typing.Type[int], typing.Type[str], typing.Type[float]]
+<pre><code class="language-python">new_list_of_types = [typing.Type[int], typing.Type[str], typing.Type[float]]
 # TypeError: Union[arg, ...]: each arg must be a type. Got [typing.Type[int], typing.Type[str], typing.Type[float].
 </code></pre>
 <p>The real answer is much simpler. Contrary to the uncareful reading of that TypeError, the problem isn't the members of the list. It's the list itself:</p>
-<pre><code class="lang-python">dynamic_list_type = pydantic.Union[tuple(list_of_types_from_user)]  # using a tuple instead
+<pre><code class="language-python">dynamic_list_type = pydantic.Union[tuple(list_of_types_from_user)]  # using a tuple instead
 </code></pre>
 <p>I skimmed the docs and relevant PEPs (<a href="https://peps.python.org/pep-0483/">483</a>, <a href="https://peps.python.org/pep-0483/">484</a>, etc) and didn't catch any mention of this behavior, but it makes sense. Tuples, as immutable, are semantically understood to have meaningful positions and orderings. This makes them a good fit for providing arguments to <code>Dict</code>, where the first type denotes the keys and the second denotes values. I don't <em>think</em> order or positioning matters for Unions, but I've been wrong before. And while we often take it for granted in Python that behavior from one iterable will generalize to all of them, it's easy to imagine why, e.g., the <code>Set</code> would be unusable in this context.</p>
 <p>If you're wondering whether there's anything special happening behind the scenes -- there's not. The <a href="https://github.com/python/cpython/blob/f20a6a54fb041507a334ad71706974960d1b473f/Lib/typing.py#L649">implementation</a> of <code>Union</code> in <code>typing</code> just works on tuples and tuples alone:</p>
@@ -120,18 +120,18 @@ dynamic_list_type = pydantic.Union[list_of_types_from_user]
     ...
     if not isinstance(parameters, tuple):
         parameters = (parameters,)
-    msg = "Union[arg, ...]: each arg must be a type."
+    msg = &quot;Union[arg, ...]: each arg must be a type.&quot;
     parameters = tuple(_type_check(p, msg) for p in parameters)
     ...
     if len(parameters) == 1:
         return parameters[0]
     if len(parameters) == 2 and type(None) in parameters:
-        return _UnionGenericAlias(self, parameters, name="Optional")
+        return _UnionGenericAlias(self, parameters, name=&quot;Optional&quot;)
     return _UnionGenericAlias(self, parameters)
 </code></pre>
 <p>As a side note, if you only provide a single type value to a Union, a type checker like Pyright will usually give you an error about Union requiring &gt;1 arguments. In practice, as you can see above, Python instead casts it down to that type alone:</p>
-<pre><code class="lang-python">typing.Union[t_0]
-# &lt;class &#39;int&#39;&gt;
+<pre><code class="language-python">typing.Union[t_0]
+# &lt;class 'int'&gt;
 </code></pre></div></div>
   </div>
 
